@@ -1,7 +1,10 @@
 import { Router } from 'express';
+import { validate } from '../middleware/validate';
+import { createEmailSchema, createEmail, getEmail } from '../controllers/email.controller';
 
 const router = Router();
 
-// Endpoints will be added in Phase 3
+router.post('/', validate(createEmailSchema), createEmail);
+router.get('/:id', getEmail);
 
 export default router;
