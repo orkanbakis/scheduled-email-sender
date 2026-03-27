@@ -1,15 +1,6 @@
-import 'dotenv/config';
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
+import app from './app';
+import { config } from './config';
 
-const app = express();
-const port = process.env.PORT ?? 3001;
-
-app.use(helmet());
-app.use(cors({ origin: process.env.CORS_ORIGIN ?? false }));
-app.use(express.json());
-
-app.listen(port, () => {
-  console.log(`Backend running on port ${port}`);
+app.listen(config.port, () => {
+  console.log(`Server running on port ${config.port}`);
 });
